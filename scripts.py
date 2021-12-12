@@ -4,11 +4,11 @@ from random import choice
 
 def find_schoolkid(name):
     try:
-        return Schoolkid.objects.get(full_name=name)
+        return Schoolkid.objects.get(full_name__icontains=name)
     except Schoolkid.objects.MultipleObjectsReturned:
-        return 'С такими данными в базе более одного ученика'
+        print('С такими данными в базе более одного ученика')
     except Schoolkid.objects.ObjectDoesNotExist:
-        return 'C такими данными учеников нет'
+        print('C такими данными учеников нет')
 
 
 def fix_marks(schoolkid):
